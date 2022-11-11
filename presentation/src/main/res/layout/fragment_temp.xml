@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.myapplication.temp.TempViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+
+        >
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:contentScrim="@color/white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                >
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/mainToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin">
+
+
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+
+
+
+
+                    <TextView
+                        android:id="@+id/match_day_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="10월 5일 수요일 10:00 ~ 12:00"
+                        android:textColor="@color/black"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/match_place_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="20dp"
+                        android:textSize="24dp"
+                        android:textColor="@color/black"
+                        android:text="순천향대학교 대운동장"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:text="충청남도 아산시 싱창면 순청향로 22"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="20dp">
+
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/match_reserve_user_name_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:textSize="14dp"
+                                android:textColor="@color/black"
+                                android:text="조준장"/>
+
+                            <TextView
+                                android:id="@+id/match_reserve_user_student_id_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:textSize="12dp"
+                                android:text="20181566"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_margin="20dp"
+                        android:layout_height="1.5dp"
+                        android:background="#eeeeee"/>
+
+
+                    <TextView
+                        android:id="@+id/match_title_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="18dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/black"
+                        android:text="우리 함께 축구할 사람~~~"/>
+
+                    <TextView
+                        android:id="@+id/match_explanation_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="14dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textStyle="bold"
+                        android:text="스자 6명 있습니다."/>
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="15dp"
+                        android:background="#eeeeee"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="매치 포인트"/>
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="20dp"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+
+                            >
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:layout_gravity="center"
+                                android:textSize="18dp"
+                                android:textColor="@color/black"
+                                android:text="모든 레벨"/>
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+
+                            >
+
+
+                            <TextView
+                                android:id="@+id/match_gender_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:textSize="18dp"
+                                android:textColor="@color/black"
+                                android:text="남녀 모두"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="20dp"
+
+                        android:layout_marginTop="10dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+
+                            >
+
+
+
+                            <TextView
+                                android:id="@+id/match_shoes_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:textSize="18dp"
+                                android:textColor="@color/black"
+                                android:text="풋살화/운동화"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+
+                            >
+
+
+
+                            <TextView
+                                android:id="@+id/match_recruitment_num_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:textSize="18dp"
+                                android:textColor="@color/black"
+                                android:text="22~26명"/>
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+
+
+                        >
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="15dp"
+                        android:background="#eeeeee"/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="22dp"
+                        android:layout_marginStart="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="15dp"
+                        android:text="매치 데이터"/>
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="15dp"
+                        android:background="#eeeeee"/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="안내 사항"
+                        android:layout_marginStart="20dp"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="매치 규칙"
+                        android:layout_marginStart="20dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="• “오순도순”에서는 매치를 잡아주기만 합니다."
+                        android:layout_marginStart="20dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="• 장소는 순천향 대학교 캠퍼스 내에서만 가능합니다."
+                        android:layout_marginStart="20dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="• 매치 시작 1시간 내에 취소하거나 무단 불참하면 이용이 제한될 수 있습니다."
+                        android:layout_marginStart="20dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="• 장소는 작성자가 직접 섭외해주셔야 합니다. "
+                        android:layout_marginStart="20dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="• 대운동장 예약은 별개로 예약하셔야 합니다."
+                        android:layout_marginStart="20dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="알아두면 좋아요"
+                        android:layout_marginStart="20dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="• 서로 존중하고 격려하며 함께 즐겨요"
+                        android:layout_marginStart="20dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="• 우리 모두 순천향인이에요"
+                        android:layout_marginStart="20dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="• 모두 함께 즐길 수 있어요"
+                        android:layout_marginStart="20dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="100dp"/>
+
+
+
+
+
+
+
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            android:layout_gravity="bottom">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="#eeeeee"/>
+
+
+
+            <TextView
+                android:id="@+id/apply_explanation_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="지금 신청하면\n진행확정이 빨라져요!"
+                android:layout_margin="20dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/apply_btn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#1570ff"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintHorizontal_bias="0.504">
+
+                <TextView
+                    android:id="@+id/apply_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="신청하기"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

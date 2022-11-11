@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyApplication.Dialog.BottomSheet" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.MyApplication.Dialog.AppModalStyle.Default</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/default_bottom_sheet_dialog_background</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="Widget.MyApplication.Button.Dialog" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textAppearance">@style/Body15Bold</item>
+        <item name="android:padding">@dimen/default_dialog_button_padding</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="Widget.MyApplication.Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">@color/colorToolbarNavigation</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingStart">@dimen/default_navigation_button_padding_start</item>
+        <item name="android:paddingEnd">@dimen/default_navigation_button_padding_end</item>
+    </style>
+
+    <style name="Widget.MyApplication.Dialog.AppModalStyle.Default" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/shape_solid_n11_corner_top_rounded_20_background</item>
+    </style>
+
+    <style name="TextAppearance.MyApplication.Dialog.Title" parent="Subtitle16Bold">
+        <item name="android:textColor">@color/default_dialog_title_text</item>
+    </style>
+
+    <style name="TextAppearance.MyApplication.Dialog.Message" parent="Body15Regular">
+        <item name="android:textColor">@color/default_dialog_message_type1_text</item>
+    </style>
+
+    <style name="Widget.MyApplication.Button.Dialog.Positive" parent="Widget.MyApplication.Button.Dialog">
+        <item name="android:textColor">@color/default_dialog_positive_button_text</item>
+    </style>
+
+    <style name="Widget.MyApplication.Button.Dialog.Negative" parent="Widget.MyApplication.Button.Dialog">
+        <item name="android:textColor">@color/default_dialog_negative_button_text</item>
+    </style>
+
+    <!--Todo Style-->
+    <style name="Widget.Todo.Button.Home.Add.Normal" parent="Widget.AppCompat.Button">
+        <item name="android:src">@drawable/ic_add_normal</item>
+        <item name="android:backgroundTint">@color/purple_200</item>
+    </style>
+
+    <style name="Widget.Todo.Button.Home.Add.Check" parent="Widget.AppCompat.Button">
+        <item name="android:src">@drawable/ic_add_check</item>
+        <item name="android:backgroundTint">@color/purple_200</item>
+    </style>
+
+    <style name="Widget.Todo.Button.Home.Add" parent="Widget.AppCompat.Button">
+        <item name="android:src">@drawable/ic_add_normal</item>
+        <item name="android:backgroundTint">@color/purple_500</item>
+    </style>
+
+    <style name="Widget.Todo.Button.Home.Delete" parent="Widget.AppCompat.Button">
+        <item name="android:src">@drawable/ic_delete_normal</item>
+        <item name="android:backgroundTint">@color/purple_500</item>
+    </style>
+
+    <style name="Widget.Todo.Button.Home.Paging" parent="Widget.AppCompat.Button">
+        <item name="android:src">@drawable/ic_paging</item>
+        <item name="android:backgroundTint">@color/purple_500</item>
+    </style>
+
+    <style name="Widget.Todo.Button.Paging.Up" parent="Widget.AppCompat.Button">
+        <item name="android:src">@drawable/ic_up</item>
+        <item name="android:backgroundTint">@color/purple_200</item>
+    </style>
+
+    <style name="Widget.Design.TextInputLayout.Home" parent="Widget.Design.TextInputLayout">
+        <item name="background">@style/TodoItem</item>
+        <item name="colorControlNormal">@color/n2</item>
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="android:textCursorDrawable">@color/black</item>
+        <item name="android:textColorHint">@color/n2</item>
+        <item name="hintTextColor">@color/n2</item>
+    </style>
+</resources>

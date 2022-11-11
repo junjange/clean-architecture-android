@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.myapplication.home.HomeViewModel" />
+        <import type="android.view.View"></import>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_home"
+            style="@style/Widget.Design.TextInputLayout.Home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingTop="@dimen/home_input_padding_tb"
+            android:paddingBottom="@dimen/home_input_padding_tb"
+            android:paddingLeft="@dimen/home_input_padding"
+            android:paddingRight="@dimen/home_input_padding">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/home_input_text"
+                android:textColorHint="@color/home_input_hint"
+                android:hint="@string/home_input_edit"
+                android:imeOptions="actionSearch"
+                android:text="@={viewmodel.queryEvent}"
+                android:drawableRight="@drawable/ic_input_search">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_todo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/ti_home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_todo"
+            todoAdapter="@{viewmodel.todoListEvent}"
+            android:orientation="vertical">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_add_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            style="@style/Widget.Todo.Button.Home.Add"
+            app:onSingleClick="@{() -> viewmodel.onCreateTodoClicked()}"
+            android:layout_margin="@dimen/home_floating_margin"/>
+
+        <TextView
+            android:id="@+id/txt_add_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Todo.TextView.Home.Floating"
+            android:padding="@dimen/home_floating_text_padding"
+            app:layout_constraintTop_toTopOf="@id/bt_add_todo"
+            app:layout_constraintBottom_toBottomOf="@id/bt_add_todo"
+            app:layout_constraintRight_toLeftOf="@id/bt_add_todo"
+            android:background="@drawable/shape_solid_n3_stroke_n3_corner_rounded_21"
+            android:visibility="@{viewmodel.toggleStateEvent ? View.VISIBLE : View.GONE}"
+            android:text="@string/home_add">
+        </TextView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_delete_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            style="@style/Widget.Todo.Button.Home.Delete"
+            app:onSingleClick="@{() -> viewmodel.onDeleteTodoClicked()}"
+            android:layout_margin="@dimen/home_floating_margin"/>
+
+        <TextView
+            android:id="@+id/txt_delete_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Todo.TextView.Home.Floating"
+            android:padding="@dimen/home_floating_text_padding"
+            app:layout_constraintTop_toTopOf="@id/bt_delete_todo"
+            app:layout_constraintBottom_toBottomOf="@id/bt_delete_todo"
+            app:layout_constraintRight_toLeftOf="@id/bt_delete_todo"
+            android:visibility="@{viewmodel.toggleStateEvent ? View.VISIBLE : View.GONE}"
+            android:text="@string/home_delete">
+        </TextView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_to_paging"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            style="@style/Widget.Todo.Button.Home.Paging"
+            app:onSingleClick="@{() -> viewmodel.onToPagingButtonClicked()}"
+            android:layout_margin="@dimen/home_floating_margin"/>
+
+        <TextView
+            android:id="@+id/txt_to_paging"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Todo.TextView.Home.Floating"
+            android:padding="@dimen/home_floating_text_padding"
+            app:layout_constraintTop_toTopOf="@id/bt_to_paging"
+            app:layout_constraintBottom_toBottomOf="@id/bt_to_paging"
+            app:layout_constraintRight_toLeftOf="@id/bt_to_paging"
+            android:visibility="@{viewmodel.toggleStateEvent ? View.VISIBLE : View.GONE}"
+            android:text="@string/to_API_page">
+        </TextView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            style="@style/Widget.Todo.Button.Home.Add.Normal"
+            android:onClick="@{() -> viewmodel.onToggleFab()}"
+            android:layout_margin="@dimen/home_floating_margin"/>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            isLoading="@{viewmodel.homeUiState}"
+            android:layout_margin="@dimen/home_floating_margin"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

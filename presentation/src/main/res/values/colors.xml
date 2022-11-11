@@ -7,4 +7,49 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="default_dialog_background">@color/white</color>
+    <color name="color_primary">@color/black</color>
+    <color name="color_primary_dark">@color/black</color>
+    <color name="color_on_secondary">@color/n1</color>
+
+    <color name="colorPrimary">@color/color_primary</color>
+    <color name="colorPrimaryDark">@color/color_primary_dark</color>
+    <color name="colorAccent">@color/n1</color>
+    <color name="colorSurface">@color/n1</color>
+    <color name="colorOnSecondary">@color/color_on_secondary</color>
+
+    <color name="colorToolbarNavigation">@color/n1</color>
+
+    <color name="color_control_light">#2EFFFFFF</color> <!-- 18% white -->
+
+    <!-- Scrim colors -->
+    <color name="system_ui_scrim_light">#B3FFFFFF</color> <!-- 70% white -->
+    <color name="system_ui_scrim_black">#40000000</color> <!-- 25% black -->
+    <color name="system_ui_scrim_semi_transparent">@color/n11_60</color>
+
+    <!-- We use a dark scrim by default since light nav bar is API 27+ -->
+    <color name="nav_bar_scrim">@color/system_ui_scrim_black</color>
+    <color name="nav_bar_scrim_semi_transparent">@color/system_ui_scrim_semi_transparent</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="n1">#111111</color>
+    <color name="n2">#555555</color>
+    <color name="n3">#888888</color>
+    <color name="n11">#ffffff</color>
+    <color name="n11_60">#99ffffff</color>
+
+
+    <color name="default_bottom_sheet_dialog_background">@color/n11</color>
+
+    <color name="default_dialog_title_text">@color/n1</color>
+    <color name="default_dialog_message_type1_text">@color/n2</color>
+    <color name="default_dialog_message_type2_text">@color/n1</color>
+
+    <color name="default_dialog_positive_button_text">@color/n1</color>
+    <color name="default_dialog_negative_button_text">@color/n3</color>
+
+    <color name="home_input_text">@color/black</color>
+    <color name="home_input_hint">@color/n2</color>
+    <color name="item_line_color">@color/black</color>
+
 </resources>

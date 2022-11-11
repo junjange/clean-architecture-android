@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.example.domain.model.Todo" />
+
+        <variable
+            name="eventListener"
+            type="com.example.myapplication.home.HomeActionHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/todo_main"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        style="@style/TodoItem">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view_contents_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp"
+            app:layout_constraintLeft_toRightOf="@id/bt_todo_check"
+            app:onSingleClick="@{() -> eventListener.onTodoClicked(model.todoIdx)}">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@{model.title}"
+                isDone="@{model.checked}"
+                style="@style/TodoTitle">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                isDone="@{model.checked}"
+                android:text="@{model.body}"
+                style="@style/TodoBody">
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/bt_todo_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:src="@{model.checked ? @drawable/ic_todo_check :@drawable/ic_todo_normal}"
+            app:onSingleClick="@{() -> eventListener.onTodoCheckClicked(model.todoIdx, model.checked)}"
+            android:layout_margin="4dp">
+        </ImageView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

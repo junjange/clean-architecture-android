@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.myapplication.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="true"/>
+
+
+
+        <action
+            android:id="@+id/action_homeFragment_to_createTodoFragment"
+            app:destination="@id/createTodoFragment"/>
+
+
+        <action
+            android:id="@+id/action_homeFragment_to_pagingFragment"
+            app:destination="@id/tempFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.myapplication.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="todoIdx"
+            app:argType="integer" />
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/createTodoFragment"
+        android:name="com.example.myapplication.create_todo.CreateTodoFragment"
+        android:label="CreateTodoFragment"
+        tools:layout="@layout/fragment_create_todo">
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/tempFragment"
+        android:name="com.example.myapplication.temp.TempFragment"
+        android:label="TempFragment"
+        tools:layout="@layout/fragment_temp">
+
+    </fragment>
+</navigation>

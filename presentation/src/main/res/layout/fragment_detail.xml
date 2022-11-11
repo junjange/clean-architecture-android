@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.myapplication.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            android:padding="@dimen/home_input_padding"
+            android:textColor="@color/black"
+            android:text="@={viewmodel.titleEvent}"
+            style="@style/TodoDetailItem">
+        </com.google.android.material.textfield.TextInputEditText>
+
+        <ScrollView
+            android:id="@+id/sc_body"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/et_title"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_body"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/home_input_padding"
+                android:text="@={viewmodel.bodyEvent}"
+                android:textColor="@color/black"
+                style="@style/TodoDetailItem">
+            </com.google.android.material.textfield.TextInputEditText>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_patch_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/home_floating_margin"
+            style="@style/Widget.Todo.Button.Home.Add.Check"
+            app:onSingleClick="@{() -> viewmodel.onPatchClicked()}"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_delete_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/bt_patch_todo"
+            app:layout_constraintEnd_toStartOf="@id/bt_patch_todo"
+            android:layout_marginEnd="@dimen/detail_delete_floating_margin"
+            style="@style/Widget.Todo.Button.Home.Delete"
+            app:onSingleClick="@{() -> viewmodel.onDeleteClicked()}"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

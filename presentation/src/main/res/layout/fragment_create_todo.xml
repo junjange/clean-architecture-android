@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.myapplication.create_todo.CreateTodoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_title"
+            style="@style/Widget.Design.TextInputLayout.Home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            android:paddingLeft="@dimen/home_input_padding"
+            android:paddingRight="@dimen/home_input_padding">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@={viewmodel.titleEvent}"
+                android:textColor="@color/home_input_text"
+                android:textColorHint="@color/home_input_hint"
+                android:hint="@string/create_title"
+                android:imeOptions="actionSearch">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_body"
+            style="@style/Widget.Design.TextInputLayout.Home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ti_title"
+            android:paddingLeft="@dimen/home_input_padding"
+            android:paddingRight="@dimen/home_input_padding">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/home_input_text"
+                android:text="@={viewmodel.bodyEvent}"
+                android:textColorHint="@color/home_input_hint"
+                android:hint="@string/create_body">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_add_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            style="@style/Widget.Todo.Button.Home.Add.Check"
+            app:onSingleClick="@{() -> viewmodel.onCreateTodoClicked()}"
+            android:layout_margin="@dimen/home_floating_margin">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
