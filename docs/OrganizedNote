@@ -1,0 +1,99 @@
+- Clean Architecture
+    - 클린 아키텍처란 우리가 만드는 애플리케이션의 경우 수많은 기능들이 있고 그것들에 따른 복잡도가 높아서 이러한 높은 복잡도를 유지보수하기 쉽고 코드를 좀더 고품질로 향상시키기 위해서 나온 구조라고 한다.
+
+
+- Clean Architecture 구조
+    - Entities
+        - 비지니스 규칙을 캡슐화 한것. 메소드를 갖는 객체일수도 있고 데이터 클래스와 함수의 집합일 수도 있다.
+        - 가장 일반적인 캡슐화이며 외부가 변경되더라고 규칙이 변경이 될 가능성이 적은 것들.
+    - Use Cases
+        - 유스케이스는 애플리케이션의 고유 규칙을 캡슐화 하며 엔티티로부터 데이터 흐름과 조합을 한다.
+        - 유스케이스 계층의 변경은 엔티티에 영향을 주면 안되며 DB, 프레임워크 및 UI에 대한 변경으로부터 분리 되어야 한다.
+    - Interface Adapters (Presenters)
+        - 인터페이스 어뎁터는 엔티티와 유스케이스의 편리한 형식에서 DB 또는 웹에 적용할 수 있는 형식으로 변환한 것.
+        - MVP 에서의 Presenter, MVVM 에서의 ViewModel 이 포함된다. (즉, 순수 비즈니스 로직만을 담당하는 역활)
+    - Frameworks & Drivers (Web, DB)
+        - 프레임워크와 드라이버는 상서한 정보들을 가진다. 웹 프레임워크, DB, UI, HTTP Client, API 등으로 구성된 가장 바깥쪽 계층 (서버와의 API 통신 부분이 될 수 있을것 같다.)
+    - 이러한 클린 아키텍처로 동작하기 위해서는 의존성 규칙을 잘 따라야 한다. 즉, 각각의 클래스는 한가지 역활만 수행을 하고, 서로 의존 관계를 어떻게 할지에 대한 규칙이 정해져 있으며 이를 지켜줘야 한다.
+    - 또한 의존성 규칙은 외부 → 내부, 저수준 → 고수준 으로 향해야 한다. 따라서 위의 그림에서 보면 내부로 갈수록 의존성은 낮아져야 한다.
+    - ViewModel 등의 비즈니스 로직은 DB, Web 과 같은 세부적인 사항들에 대해서 의존하지 않아야 한다.
+
+
+- Clean Architecture 의 장점
+    - 새로운 기능을 빠르게 적용시킬 수 있다.
+    - 집중화된 클래스에 따라서 프로젝트의 유지보수 및 관리가 용이해진다.
+    - 패키지 구조 탐색이 쉬워진다.
+    - 테스트 코드 작성이 용이하다.
+
+
+- Android 에서의 Clean Architecture
+    - 안드로이드 에서의 클린 아키텍처를 적용할때 에는 Presentation, Domain, Data 이렇게 3개의 계층으로 나눠지게 된다.
+    - Presentation → Domain, Data → Domain 이런 방향으로 의존성을 가지고 있다. (→ : 바라본다.)
+    - Presentation
+        - 화면 및 입출력에 대한 UI 와 관련된 부분을 담당한다.
+        - 즉, Activity, Fragment, View, Presenter, ViewModel 등이 포함될 것 같다.
+    - Domain
+        - 애플리케이션의 비즈니스 로직에서 필요한 UseCase, Model 을 포함하는 부분이다.
+        - UseCase 의 경우 각각의 개별적인 기능이나 비즈니스 논리 단위이며 Presentation, Data 계층에 대한 의존성을 가지지 않고 독립적으로 분리 되어야 한다.
+        - 위의 그림을 보면 Repository 부분도 포함이 되어 있다.
+    - Data
+        - 도메인에 대한 의존성을 가지고 있는 계층이며 도메인 계층의 Repository 구현체를 포함하고 있다.
+        - DB, Web, HTTP Client (서버와의 API 통신) 등이 이 계층에 들어간다.
+        - 또한 mapper 클래스를 통해서 데이터 계층의 모델을 도메인 계층의 모델로 변환시켜주는 역활도 하게 된다.
+
+
+- 적용해본 클린 아키텍처 구조 예시
+    - 패키지 구조
+        - di (의존성 관련 부분)
+            - Database Module (Room 또는 Realm 을 사용할 경우 의존성 주입 관련 부분)
+            - Network Module (Api Module ← 서버와의 API 통신에 대한 의존성 주입 관련 부분)
+            - App Module (Adapter 등 이제 앱내에서 의존성 관련한 부분)
+
+        - util (추가적으로 사용할 것들, LoadingDialog, Constant 부분)
+
+        - Presentation Layer (UI, 비즈니스 로직과 직접적으로 관련된 부분)
+            - adapter (Adapter 관련된 부분)
+            - views (Activity & Fragment 관련된 부분)
+            - viewModel (ViewModel 관련된 부분)
+            - base (Base Setting 부분)
+
+        - Domain Layer (비즈니스 로직에서 필요한 Entity, Usecase, Repository 부분)
+            - model (Data class와 Model 에 관련된 부분)
+            - usercase (API에 대한 interface 관련된 부분)
+
+        - Data Layer (HTTP Client, DB, SP, Interceptor 과 관련된 부분)
+            - mapper (도메인 계층의 model 관련해서 mapping 작업과 같은 것들에 대한 부분)
+            - sharedpreference (내부 데이터와 관련된 부분)
+            - DB (Room, Realm 내장 DB 와 관련된 부분)
+            - interceptor (서버와의 통신이 토큰및 여러가지 interceptor 부분)
+            - repository (Usecase 에 대한 동작을 정의하는 부분)
+
+
+- 각 파일이 하는 역할
+    - NavHostActivity -> BaseActivity를 상속받으며 각 Fragment를 연결한다.
+                       + 연결의 경우 Navigation/navigation_graph.xml 에서 설정한 후 사용한다.
+    - Common -> Base, Di, Util, widget : Base 세팅, 의존성, 부가적인 기능
+    - 각 Page(Ex. Home) -> HomeFragment, HomeViewModel, HomeNavigationAction, HomeActionHandler
+                         + RecyclerView 와 같은 기능이 있어 adpater를 사용해야한다면 TodoAdapter, TodoViewHolder 사용
+                         + 레이아웃에 내가 원하는 메서드를 만들고 싶다면 HomeBidingAdaters 사용
+    - BaseResult -> ???
+    - Use case -> usecase/UsecaseOrganizedNote 참고
+    - Repository -> 내가 흔히 알고 있는 retrofit을 호출하는 repository 와 다르게 엄청 간소하게 정리되어 있음..
+                    아마 서버와 연결되는 부분은 data에서 이루어질듯? 그렇다면 위에 BaseResult와 data가 연결되는 부분일수도?!..
+                    data와 domain에 Repostitory 구성이 똑같다!?..
+                    이 부분은 data/DataOrganizedNote를 확인하면 될듯
+    - Model -> 내가 흔히 알고 있는 model
+    - usecase : 사용자가 요청할 수 있는 서비스(기능)
+    - Repository : 기능을 Interface에서 정의
+    - RepositoryImpl : 기능을 구현
+    - DataSource : API를 Interface에서 정의
+    - DataSourceImpl : API 구현
+    - TempApiService : API 호출
+
+
+- 흐름
+    - Activity/Fragment/Adapter -> ViewModel -> UseCase -> Repository -> RepositoryImpl -> DataSource -> DataSourceImpl -> ApiService
+    - Presentation <-> Domain <-> Data
+
+
+*참고 : https://juicy-capacity-601.notion.site/832119efdd1e49d2a4778ff8d4878b3d?v=3ac3fc832e8b4b82bb782e904efd6cd6&p=093afbc490154525bfcb663a4b177272&pm=s
